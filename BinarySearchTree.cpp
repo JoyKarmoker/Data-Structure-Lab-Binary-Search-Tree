@@ -26,6 +26,11 @@ BstNode* Insert(BstNode* root, int data)
         root = GetNewNode(data);
     }
 
+    else if(data == root->data)
+    {
+        printf("Already in the loop\n");
+        return root;
+    }
     else if(data <= root->data)
     {
         root->left = Insert(root->left, data);
@@ -59,7 +64,7 @@ bool Search(BstNode* root, int data)
     }
 }
 
-BstNode* Searcher(BstNode* root)
+void Searcher(BstNode* root)
 {
     int number;
     printf("Enter a number to search\n");
@@ -77,24 +82,43 @@ BstNode* Searcher(BstNode* root)
 
 }
 
+BstNode* Inserter(BstNode* root)
+{
+    BstNode* newroot;
+    int data;
+    printf("Give The Number you want to add\n");
+    scanf("%d", &data);
+
+    newroot = Insert(root, data);
+
+    return newroot;
+}
+
+
 int main()
 {
     char s, i;
     BstNode* root;
     root = NULL;
 
-    root = Insert(root, 15);
-    root = Insert(root, 10);
-    root = Insert(root, 20);
-    root = Insert(root, 8);
-    root = Insert(root, 12);
-
-    printf("Press s for search\n");
-    cin >> s;
-    if(s == 's' || s== 'S')
+    do
     {
-        root = Searcher(root);
-    }
+        printf("Press S for search, I For insert And E for escape\n");
+        cin >> s;
+
+
+        if(s == 'I' || s== 'i')
+        {
+            root = Inserter(root);
+        }
+
+        else if(s == 's' || s== 'S')
+        {
+            Searcher(root);
+        }
+
+    }while(s != 'E' && s != 'e');
+
 
 
     return 0;
