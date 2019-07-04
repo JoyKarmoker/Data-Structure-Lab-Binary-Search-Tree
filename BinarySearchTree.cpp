@@ -59,25 +59,9 @@ bool Search(BstNode* root, int data)
     }
 }
 
-void Searcher()
+BstNode* Searcher(BstNode* root)
 {
-
-}
-
-int main()
-{
-
-
-    BstNode* root;
-    root = NULL;
-
-    root = Insert(root, 15);
-    root = Insert(root, 10);
-    root = Insert(root, 20);
-    root = Insert(root, 8);
-    root = Insert(root, 12);
-
-        int number;
+    int number;
     printf("Enter a number to search\n");
     scanf("%d", &number);
 
@@ -91,6 +75,26 @@ int main()
         printf("\n%d Not Found in The tree\n", number);
     }
 
+}
+
+int main()
+{
+    char s, i;
+    BstNode* root;
+    root = NULL;
+
+    root = Insert(root, 15);
+    root = Insert(root, 10);
+    root = Insert(root, 20);
+    root = Insert(root, 8);
+    root = Insert(root, 12);
+
+    printf("Press s for search\n");
+    cin >> s;
+    if(s == 's' || s== 'S')
+    {
+        root = Searcher(root);
+    }
 
 
     return 0;
